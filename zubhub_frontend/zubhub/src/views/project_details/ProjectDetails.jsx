@@ -402,7 +402,10 @@ function ProjectDetails(props) {
                     className={classes.descriptionBodyStyle}
                     color="textSecondary"
                   >
-                    {project.description.startsWith("<p>") ? project.description.slice(3 , -4) : project.description}
+                {project.description.startsWith("<p>") && project.description.endsWith("</p>")? project.description.slice(3 , -4)
+                 : project.description.startsWith("<p>") ? project.description.slice(3)
+                 :project.description.endsWith("</p>") ? project.description.slice(0 , -4) 
+                 :project.description}
                   </Typography>
                 </Grid>
                 {project.tags.length > 0 ? (

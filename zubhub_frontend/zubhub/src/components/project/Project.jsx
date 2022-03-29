@@ -105,7 +105,10 @@ function Project(props) {
                 color="textSecondary"
                 component="p"
               >
-                {project.description.startsWith("<p>") ? project.description.slice(3 , -4) : project.description}
+                {project.description.startsWith("<p>") && project.description.endsWith("</p>")? project.description.slice(3 , -4)
+                 : project.description.startsWith("<p>") ? project.description.slice(3)
+                 :project.description.endsWith("</p>") ? project.description.slice(0 , -4) 
+                 :project.description}
               </Typography>
             </Box>
             <Link
